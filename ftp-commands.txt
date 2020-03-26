@@ -1,0 +1,6 @@
+open 192.81.218.202
+user anonymous anna.baker@codefresh.io
+cd incoming
+prompt
+mput "*.*"
+bye
