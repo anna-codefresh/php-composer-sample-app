@@ -1,15 +1,47 @@
-version: '1.0'
+# More examples of Codefresh YAML can be found at
+# https://codefresh.io/docs/docs/yaml-examples/examples/
+
+version: "1.0"
+# Stages can help you organize your steps in stages
+stages:
+  - "clone"
+  - "install"
+  - "ftp transfer"
+  - "scp transfer"
 steps:
   main_clone:
-    title: Cloning main repository...
-    type: git-clone
-    repo: 'codefresh-contrib/php-composer-sample-app'
-    revision: master
-    git: github
-  MyAppDockerImage:
-    title: Building Docker Image
-    type: build
-    image_name: my-php-image
-    working_directory: ./
-    tag: master
-    dockerfile: Dockerfile
+    title: "Cloning main repository..."
+    type: "git-clone"
+    repo: "anna-codefresh/php-composer-sample-app"
+    git: "github"
+    stage: "clone"
+  collect_dependencies:
+    title: "Collecting Php dependencies..."
+    type: "freestyle"
+    image: "composer:1.9.3"
+    commands:
+      - "composer install --ignore-platform-reqs --no-interaction --no-plugins --no-scripts --prefer-dist"
+      - ls
+    stage: "install"
+  ftp_transfer:
+    title: "Transferring application to VM via ftp..."
+    type: "freestyle" 
+    image: "dockito/ftp-client:latest"
+    working_directory: "./"
+    commands:
+      - "ftp -p -n < ftp-commands.txt"
+    stage: "ftp transfer"
+  scp_transfer:
+    title: "Transferring application to VM via scp..."
+    type: "freestyle" 
+    image: "ictu/sshpass:latest"
+    working_directory: "./"
+    environment:
+      - USER=<USER>
+      - HOST=<REMOTE.IP.ADDRESS>
+      - PASSWORD=<PASSWORD>
+    commands:
+      - echo | ssh-keygen -P '' -t rsa
+      - sshpass -p $PASSWORD ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no $USER@$HOST
+      - scp -r ../php-composer-sample-app $USER@$HOST:/home
+    stage: "scp transfer"
