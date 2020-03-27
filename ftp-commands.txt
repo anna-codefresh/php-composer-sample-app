@@ -1,5 +1,5 @@
-open 192.81.218.202
-user anonymous anna.baker@codefresh.io
+open $HOST
+user $USER $PASSWORD
 cd php-composer-sample-app
 prompt
 mput "*.*"
