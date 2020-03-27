@@ -1,5 +1,6 @@
-open $HOST
-user $USER $PASSWORD
+open <HOST>
+user <USER> <PASSWORD>
+mkdir php-composer-sample-app
 cd php-composer-sample-app
 prompt
 mput "*.*"
