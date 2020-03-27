@@ -1,0 +1,7 @@
+open 192.81.218.202
+user anonymous anna.baker@codefresh.io
+mkdir php-composer-sample-app
+cd php-composer-sample-app
+prompt
+mput "*.*"
+bye
