@@ -1,7 +1,7 @@
-# Transferring a Php Application via ftp and scp
+# Transferring a Php Application via FTP
 ![codefresh](flat-logo.png)
 
-This is a simple application that displays a Php timer.  The purpose of this sample application is to guide you on the process of transferring your applications via ftp or scp using a Codefresh pipeline.
+This is a simple application that displays a Php timer.  The purpose of this sample application is to guide you on the process of transferring your applications via ftp using a Codefresh pipeline.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ Example pipeline:
 
 * [Simple pipeline](codefresh.yml)
 
-Read https://codefresh.io/docs//docs/yaml-examples/examples/transferring-php-ftp-scp/ for more details.
+Read https://codefresh.io/docs//docs/yaml-examples/examples/transferring-php-ftp/ for more details.
 
 
 
