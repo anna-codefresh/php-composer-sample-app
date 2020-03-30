@@ -1,8 +1,0 @@
-open <HOST>
-user <USER> <PASSWORD>
-cd /path/to/your/incoming/ftp/dir
-mkdir php-composer-sample-app
-cd php-composer-sample-app
-prompt
-mput "*.*"
-bye
